@@ -1,0 +1,19 @@
+model:
+  repo_id: OpenGVLab/InternVL3_5-8B
+  local_dir: ./InternVL/models/InternVL3_5-8B
+  revision:
+  device_map: auto
+  torch_dtype: bfloat16
+  load_in_8bit: true
+  low_cpu_mem_usage: true
+  use_flash_attn: true
+
+run:
+  prompt: "Summarize the key ideas behind Cascade RL in InternVL3.5."
+  system_prompt: "You are InternVL3.5-8B running in 8-bit mode. Provide concise, factual answers."
+  max_new_tokens: 512
+  temperature: 0.6
+  top_p: 0.9
+  do_sample: true
+  num_beams:
+
