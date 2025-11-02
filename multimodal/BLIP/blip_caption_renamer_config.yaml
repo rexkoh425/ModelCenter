@@ -1,0 +1,27 @@
+---
+# Directory containing the images to rename.
+directory: ./BLIP/images
+
+# Set to true to preview renames without changing files.
+dry_run: true
+
+# (Optional) BLIP model and device overrides.
+model: Salesforce/blip-image-captioning-large
+device: 0
+
+# Caption generation controls.
+max_chars: 80
+max_new_tokens: 30
+
+# Prefix/suffix fragments added around the caption slug.
+prefix: ""
+suffix: ""
+
+# File extensions to include (omit or leave empty to use defaults).
+extensions:
+  - jpg
+  - jpeg
+  - png
+
+# Recursively scan subdirectories.
+recursive: false
