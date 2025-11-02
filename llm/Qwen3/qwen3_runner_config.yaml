@@ -1,0 +1,18 @@
+---
+model:
+  repo_id: Qwen/Qwen3-8B-Instruct
+  local_dir: ./Qwen3/models/Qwen3-8B-Instruct
+  revision:
+  device: auto
+  dtype: auto
+  max_new_tokens: 512
+  temperature: 0.7
+  top_p: 0.9
+  download_only: false
+
+run:
+  prompt: "List three creative uses for a coffee mug."
+  system_prompt: "You are an energetic brainstorming assistant."
+  max_new_tokens: 256
+  temperature: 0.6
+  top_p: 0.9
