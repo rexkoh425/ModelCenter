@@ -1,0 +1,18 @@
+---
+model:
+  repo_id: deepseek-ai/deepseek-llm-7b-chat
+  local_dir: ./DeepSeek/models/deepseek-llm-7b-chat
+  revision:
+  device: auto        # auto|cuda|cuda:0|cpu
+  dtype: auto         # auto|float16|bfloat16|float32
+  download_only: false
+  max_new_tokens: 512
+  temperature: 0.7
+  top_p: 0.9
+
+run:
+  prompt: "Give me a one-sentence summary of Transformers."
+  system_prompt: "You are a concise assistant."
+  max_new_tokens: 256
+  temperature: 0.6
+  top_p: 0.9
