@@ -1,0 +1,27 @@
+---
+# Path to the source video that will be translated.
+input_video: ./CycleGAN/example_input.mp4
+
+# Optional path for the translated video. Leave blank to auto-generate.
+output:
+
+# Which CycleGAN mapping to use (see MODEL_URLS in cyclegan_video.py).
+mapping: horse2zebra
+
+# Device options: auto, cpu, cuda, mps.
+device: auto
+
+# Run generator in fp16 when True (only when CUDA is available).
+fp16: false
+
+# Override output FPS. Leave blank to reuse the source FPS.
+fps:
+
+# When true, output video concatenates original + translated frames.
+side_by_side: false
+
+# Maximum frames to process (null = process entire video).
+max_frames:
+
+# Verbose progress logging.
+verbose: false
