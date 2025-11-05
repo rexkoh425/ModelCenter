@@ -1,0 +1,23 @@
+model:
+  base_model_id: stabilityai/stable-diffusion-xl-base-1.0
+  refiner_model_id: stabilityai/stable-diffusion-xl-refiner-1.0
+  enable_refiner: false
+  torch_dtype: bfloat16
+  use_xformers: true
+  variant:
+  guidance_scale: 7.0
+  num_inference_steps: 30
+  refiner_guidance_scale: 5.0
+  refiner_steps: 10
+
+run:
+  prompt: "A cinematic dashboard view from the driver seat of an electric concept car, ultra realistic, dusk lighting."
+  negative_prompt: "blurry, distorted, extra limbs, text overlay"
+  width: 1024
+  height: 1024
+  num_images: 1
+  seed: 1234
+  output_dir: ./SDXL/outputs
+  prefix: sdxl
+  auto_filename: true
+
