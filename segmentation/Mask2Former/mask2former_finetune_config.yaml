@@ -1,0 +1,112 @@
+# Configuration template for Mask2Former lane fine-tuning.
+# Fill in local paths for your pooled COCO datasets exported from Roboflow.
+
+model:
+  pretrained_config: projects/mask2former/configs/cityscapes/panoptic.yaml  # Base Detectron2 config file that defines the architecture/backbone.
+  pretrained_weights: facebook/mask2former-swin-large-cityscapes-panoptic  # Checkpoint used to initialize weights before fine-tuning.
+  output_dir: Mask2Former/output                                           # Directory where logs and checkpoints will be written.
+
+data:
+  train_json: Storage/Pooled_75205/train/train_annotations.coco.json       # COCO annotation file for the training split.
+  val_json: Storage/Pooled_75205/val/val_annotations.coco.json             # COCO annotation file for validation.
+  test_json: Storage/Pooled_75205/test/test_annotations.coco.json          # COCO annotation file for held-out testing.
+  image_root: Storage/Pooled_75205                                         # Shared root that contains each split's image directory.
+  num_classes: 38                                                          # Number of semantic classes being predicted (e.g., road + lane-marking).
+  class_names: ["ahead", "ahead or turn left", "ahead or turn right", "alternative", "cycle track", "direct", "divider-line", "dotted-line", "double-line", "lane", "lane-markings", "lane_marking", "left", "left boundary -dashed-", "left boundary -solid-", "lines-xppl", "my_car", "pothole", "r", "r-l-lane", "random-line", "right", "right boundary -dashed-", "right boundary -solid-", "right turn", "road", "road lane", "road-lanes", "road-sign-line", "roads", "roads-cars-etc-", "route", "seg", "solid-line", "turn left", "vehicle", "white_lines", "yellow_lines", "zebra crossing"]  # Ordered list of class names for reporting and visualization.
+  sample_pool:                                                               # Optional controls when you pre-sample a subset of the pooled data.
+    enabled: false                                                           # Enable if you intend to downsample with sample_coco_subset.py.
+    target_count: 800                                                        # Number of images to keep when subsampling.
+    seed: 21                                                                 # RNG seed so the sampled subset is reproducible.
+
+training:
+  epochs: 10                                                                 # Total number of passes through the training set.
+  patience: 40                                                               # Early-stopping patience (epochs without improvement before stopping).
+  batch: 8                                                                   # Images per batch; tune based on GPU memory.
+  imgsz: 640                                                                 # Input resolution for training/validation.
+  save: true                                                                 # Persist checkpoints during training.
+  save_period: -1                                                            # How often to save intermediate checkpoints (-1 disables periodic saves).
+  cache: false                                                               # Cache dataset in RAM/disk for faster loading.
+  device: cuda:0                                                             # Device binding for training (e.g., cuda:0 or cpu).
+  workers: 8                                                                 # Number of dataloader worker processes/threads.
+  project: roadlane-mask2former                                              # Name of the experiment project folder.
+  name: swin-large-finetune                                                  # Specific run/experiment name within the project folder.
+  exist_ok: false                                                            # If true, reuse an existing output directory without error.
+  pretrained: true                                                           # Load pretrained weights; set false to train from scratch.
+  optimizer: AdamW                                                           # Optimizer choice (AdamW handles weight decay well for transformers).
+  verbose: true                                                              # Print detailed logging information during training.
+  seed: 0                                                                    # Random seed for dataloader shuffling and augmentation.
+  deterministic: true                                                        # Enable deterministic behavior (slightly slower but reproducible).
+  single_cls: false                                                          # Treat data as a single class (set true if you collapse all labels).
+  rect: false                                                                # Use rectangular batching; useful for detection but usually false here.
+  cos_lr: false                                                              # Use cosine LR scheduler instead of default multi-step.
+  close_mosaic: 20                                                           # Disable mosaic augmentation for the last N epochs.
+  resume: false                                                              # Resume from the last checkpoint if true.
+  amp: true                                                                  # Use PyTorch AMP for mixed-precision training.
+  fraction: 1.0                                                              # Fraction of the training set to actually use (1.0 = entire dataset).
+  profile: false                                                             # Collect performance profiling information when true.
+  freeze: 0                                                                  # Freeze the first N layers (0 keeps everything trainable).
+  multi_scale: false                                                         # Randomly vary image sizes between batches.
+  overlap_mask: true                                                         # Allow overlapping masks during segmentation training.
+  mask_ratio: 4                                                              # Downsampling ratio for mask prediction head.
+
+evaluation:
+  val: true                                                                  # Run evaluation during training.
+  split: val                                                                 # Which dataset split to use for validation metrics.
+  save_json: true                                                            # Save evaluation results to JSON (COCO metrics).
+  save_hybrid: false                                                         # Save hybrid labels (ground truth + predictions) for analysis.
+  iou: 0.7                                                                   # IoU threshold for NMS/metric filtering.
+  max_det: 300                                                               # Max number of detections per image for evaluation.
+  half: false                                                                # Evaluate using FP16 (half precision) if true.
+  plots: true                                                                # Generate confusion-matrix/PR plots after validation.
+
+prediction:
+  source: null                                                               # Optional inference source for quick smoke tests (folder/video path).
+  vid_stride: 1                                                              # Frame stride when predicting on videos (1 = process every frame).
+  visualize: false                                                           # Dump intermediate feature visualizations.
+  augment: false                                                             # Apply test-time augmentation (multi-scale/flips) during inference.
+  classes: null                                                              # Limit predictions to particular class IDs if provided.
+  retina_masks: true                                                         # Render higher-resolution masks for nicer visual output.
+  show: false                                                                # Display images in a window while predicting (needs GUI).
+  show_labels: true                                                          # Draw class names on predictions.
+  show_conf: true                                                            # Draw confidence values on predictions.
+  show_boxes: true                                                           # Draw bounding boxes alongside masks.
+
+export:
+  format: torchscript                                                        # Export format for deployment (e.g., torchscript, onnx).
+  keras: false                                                               # Convert to Keras model when exporting (ONNX/TF workflows).
+  optimize: false                                                            # Run TorchScript mobile optimizations if true.
+  int8: false                                                                # Enable INT8 quantization (CoreML/TF).
+  dynamic: false                                                             # Use dynamic axes for ONNX/TF/TensorRT exports.
+  simplify: false                                                            # Simplify ONNX graph via onnxslim.
+  opset: null                                                                # Override ONNX opset version if needed.
+  workspace: 4                                                               # TensorRT workspace size in GB.
+  nms: false                                                                 # Append an NMS op inside exported CoreML graph.
+
+hyperparameters:
+  lr0: 0.01                                                                  # Initial learning rate for the optimizer.
+  lrf: 0.01                                                                  # Final learning rate multiplier (lr_final = lr0 * lrf).
+  momentum: 0.937                                                            # Momentum/beta1 for the optimizer.
+  weight_decay: 0.0005                                                       # L2 weight decay strength.
+  warmup_epochs: 3.0                                                         # Length of the LR warmup phase in epochs.
+  warmup_momentum: 0.8                                                       # Initial momentum during warmup.
+  warmup_bias_lr: 0.1                                                        # Initial LR for bias parameters during warmup.
+  label_smoothing: 0.2                                                       # Amount of label smoothing to apply to targets.
+  nbs: 64                                                                    # Nominal batch size used to scale regularization (YOLO convention).
+
+augmentations:
+  hsv_h: 0.015                                                               # Hue jitter intensity.
+  hsv_s: 0.5                                                                 # Saturation jitter intensity.
+  hsv_v: 0.4                                                                 # Value/brightness jitter intensity.
+  degrees: 25                                                                # Random rotation range (+/- degrees).
+  translate: 0.2                                                             # Max translation offset as image fraction.
+  scale: 0.1                                                                 # Random scaling factor range.
+  shear: 0.0                                                                 # Random shear angle.
+  perspective: 0.00001                                                       # Perspective distortion amount.
+  flipud: 0.2                                                                # Probability of vertical flip.
+  fliplr: 0.5                                                                # Probability of horizontal flip.
+  mosaic: 0.4                                                                # Probability of applying mosaic augmentation.
+  mixup: 0.0                                                                 # Probability of mixup augmentation.
+  copy_paste: 0.0                                                            # Probability of copy-paste augmentation (segment mode).
+  auto_augment: null                                                         # Named auto-augmentation policy (randaugment, augmix, etc.).
+  erasing: 0.1                                                               # Random erasing probability for classification-style augmentation.
+  crop_fraction: 1.0                                                         # Proportion of the image kept after random cropping (1.0 = no crop).

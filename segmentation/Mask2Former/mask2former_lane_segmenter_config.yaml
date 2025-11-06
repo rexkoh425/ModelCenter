@@ -1,0 +1,45 @@
+# Path to the driving footage you want to analyze.
+input_video: /path/to/dashcam.mp4
+
+# Optional output file (defaults to <input>_panoptic_lanes.mp4).
+output:
+
+# Hugging Face model hub ID for Mask2Former panoptic checkpoint.
+model: facebook/mask2former-swin-large-cityscapes-panoptic
+
+# Device can be "auto", "cpu", "cuda", or "cuda:0".
+device: auto
+
+# Override FPS for the output video (defaults to the source FPS).
+fps:
+
+# Labels to highlight; matched against the model's id2label mapping.
+highlight_labels:
+  - road
+  - lane-marking
+  - ground
+  - parking
+
+# BGR overlay color that will be blended onto the road mask.
+overlay_color: [64, 255, 112]
+
+# Transparency for blending (0=no tint, 1=solid color).
+overlay_alpha: 0.6
+
+# Ignore panoptic segments below this confidence.
+min_score: 0.35
+
+# Downsample long edges before running the model to save VRAM (pixels).
+max_long_edge: 1280
+
+# Morphological dilation kernel to make masks smoother (pixels).
+dilate_kernel: 5
+
+# Export original+overlay stacked horizontally.
+side_by_side: true
+
+# When true, emit a pure binary mask video instead of an overlay.
+output_mask_only: false
+
+# Limit processing to the first N frames for quick tests.
+max_frames:
