@@ -1,0 +1,21 @@
+model:
+  img_channels: 3            # 3 for RGB, add channels if stacking masks
+  imu_input_dim: 6           # 6 + extra_state_keys
+  freeze_camera: false       # true to freeze camera branch
+  freeze_bev: false          # true to freeze LiDAR BEV branch
+  freeze_imu: false          # true to freeze IMU/state MLP
+  freeze_head: false         # true to freeze fusion + output head
+
+data:
+  extra_image_keys: []       # e.g., ["yolop_mask", "m2f_mask"]
+  extra_state_keys: []       # e.g., ["light_state"]
+  imu_scale: [5.0, 5.0, 2.0, 1.0, 1.0, 30.0]
+  bev:
+    x_range: [-20.0, 20.0]
+    y_range: [0.0, 40.0]
+    resolution: 0.2
+
+train:
+  batch_size: 8
+  lr: 1.0e-4
+  epochs: 10
