@@ -1,0 +1,28 @@
+---
+# Input video whose frames will be processed.
+input_video: ./DepthAnything/example_input.mp4
+
+# Optional custom output path for the rendered depth video.
+output:
+
+# Hugging Face model id to load.
+model: LiheYoung/depth-anything-v2-large-hf
+
+# Device options: auto, cpu, cuda, mps.
+device: auto
+
+# Override output FPS. Leave blank to keep the source FPS.
+fps:
+
+# Colormap used when visualising depth (see COLORMAP_LOOKUP).
+colormap: inferno
+
+# Percentile range used to normalise depth values.
+min_percentile: 2.0
+max_percentile: 98.0
+
+# When true, stack RGB + depth frames side-by-side.
+side_by_side: false
+
+# Maximum frames to process (null = no limit).
+max_frames:
