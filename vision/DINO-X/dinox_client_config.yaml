@@ -1,0 +1,23 @@
+---
+# Directory or single image file to send to DINO-X.
+input_path: ./DINO-X/images
+
+# Optional API token (falls back to DDS_API_TOKEN env var when blank).
+api_token:
+
+# Model + textual prompting controls.
+model: DINO-X-1.0
+prompt: "dog . bicycle"
+prompt_free: false
+
+# Detection targets to request (e.g., bbox, mask).
+targets:
+  - bbox
+  - mask
+
+# Thresholds and output controls.
+bbox_threshold: 0.25
+iou_threshold: 0.8
+output_dir: ./outputs/dinox
+save_visuals: false
+force: false
