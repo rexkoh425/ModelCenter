@@ -1,0 +1,50 @@
+# LaneATT model/training configuration (compatible with the pip `laneatt` package)
+
+backbone: resnet34
+feature_volume_channels: 128
+
+anchor_discretization:
+  y: 72
+  x: 128
+
+image_size:
+  width: 640
+  height: 360
+
+dataset_image_size:
+  width: 1280
+  height: 720
+
+anchor_angles:
+  left: [72., 60., 49., 39., 30., 22.]
+  right: [108., 120., 131., 141., 150., 158.]
+  bottom: [165., 150., 141., 131., 120., 108., 100., 90., 80., 72., 60., 49., 39., 30., 15.]
+
+positive_threshold: 0.5
+
+optimizer:
+  name: Adam
+  parameters:
+    lr: 0.0001
+    weight_decay: 0.0001
+
+lr_scheduler:
+  name: CosineAnnealingLR
+  parameters:
+    T_max: 166650
+
+epochs: 100
+batch_size: 8
+model_checkpoint_interval: 5
+
+checkpoints_dir: LaneATT/checkpoints
+outputs_dir: LaneATT/outputs
+logs_dir: LaneATT/logs
+
+dataset:
+  train:
+    root: /path/to/train_split   # contains JSON + raw_file images (TuSimple-style)
+  val:
+    root: /path/to/val_split
+  test:
+    root: /path/to/test_split

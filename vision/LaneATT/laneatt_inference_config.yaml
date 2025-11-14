@@ -1,0 +1,12 @@
+# LaneATT video inference settings
+
+input_video: /abs/path/to/your/video.mp4
+model_config: LaneATT/laneatt_model_config.yaml
+weights: LaneATT/checkpoints/laneatt_100.pt
+output: null                 # optional; defaults to <input>_laneatt.mp4
+
+frame_stride: 1              # process every Nth frame
+apply_nms: true              # CPU NMS from the library to deduplicate lanes
+nms_threshold: 40.0          # increase to merge similar lines more aggressively
+max_frames: null             # limit frames for quick previews
+show_preview: false          # pop up a window while processing

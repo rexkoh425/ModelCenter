@@ -1,0 +1,8 @@
+torch>=2.0
+torchvision>=0.15
+laneatt==2.4.5
+opencv-python
+pyyaml
+numpy
+scipy
+tqdm

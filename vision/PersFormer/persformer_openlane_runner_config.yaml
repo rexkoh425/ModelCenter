@@ -1,0 +1,41 @@
+# Path to the cloned OpenDriveLab/PersFormer_3DLane repository.
+repo:
+  path: ../external/PersFormer_3DLane
+  git_url: https://github.com/OpenDriveLab/PersFormer_3DLane.git
+  auto_clone: true
+  branch: main
+
+# Runtime parameters passed to PersFormer.
+run:
+  # Supported values: openlane, once, apollo.
+  dataset_variant: openlane
+  dataset_name:
+
+  # Update these to point at your OpenLane images and annotation json folders.
+  dataset_dir: /data/OpenLane/images
+  annotations_dir: /data/OpenLane/lane3d_1000
+
+  # Experiment bookkeeping.
+  experiment_name: persformer_openlane_eval
+  output_root: ./PersFormer/runs
+
+  # Job behaviour: train or evaluate.
+  mode: evaluate
+  checkpoint: /checkpoints/model_best_epoch.pth.tar
+
+  batch_size: 1
+  num_epochs:
+  workers: 4
+
+  # Single-process launcher settings (Linux + CUDA required).
+  master_port: 29666
+  local_rank: 0
+
+  evaluate_case: false
+  no_tensorboard: true
+  use_memcache: false
+  sync_bn: true
+
+  # Optional dictionary of PersFormer args to override after the stock config runs.
+  overrides:
+    learning_rate: 0.0002
