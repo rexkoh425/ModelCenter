@@ -1,0 +1,20 @@
+---
+# Image file or directory to analyze.
+input_path: ./YOLOE/images
+
+# Text prompt describing categories (comma separated).
+prompt: "person, bicycle"
+
+# YOLOE checkpoint (see MODEL_CHOICES in the script).
+model: yoloe-v8l
+
+# Core inference controls.
+image_size: 640
+confidence: 0.25
+iou: 0.5
+device: auto
+
+# Output behaviour.
+output_dir: ./outputs/yoloe
+save_visuals: false
+force: false
