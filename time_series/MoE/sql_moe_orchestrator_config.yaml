@@ -1,0 +1,21 @@
+qwen_runner_config: ../Qwen3/qwen3_runner_config.yaml
+
+database:
+  dialect: postgres
+  schema_file: ./schemas/ecommerce_sample_schema.sql
+  inline_schema: |
+    -- Derived fields that analysts rely on.
+    -- order_items.sale_price already reflects any discounts.
+    -- refunds.refund_amount should be subtracted from gross sales to compute net revenue.
+
+router:
+  max_experts: 3
+  temperature: 0.12
+  top_p: 0.9
+
+run:
+  user_query: "Return total gross merchandise value per category for the past 30 days."
+  extra_context: |
+    Only include orders with status 'completed'. Treat gross merchandise value as SUM(order_items.quantity * order_items.sale_price).
+  print_intermediate: true
+
