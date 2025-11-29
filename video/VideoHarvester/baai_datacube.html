@@ -1,0 +1,61 @@
+﻿
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="applicable-device"content="pc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    
+    <title>BAAI-DataCube_第一人称驾驶视频数据集</title>
+    
+    <meta name="keywords" content="modelscope,魔搭社区,模型" data-rh="true" />
+    
+    <meta name="description" content="ModelScope——汇聚各领域先进的机器学习模型，提供模型探索体验、推理、训练、部署和应用的一站式服务。在这里，共建模型开源社区，发现、学习、定制和分享心仪的模型。" />
+    <meta property="og:title" content="BAAI-DataCube_第一人称驾驶视频数据集" />
+    <meta property="og:url" content="//www.modelscope.cn/datasets/BAAI/BAAI-DataCube_First-person-Driving" />
+    <meta property="og:image" content="https://resouces.modelscope.cn/avatar/5b2ecfe4-6631-4f8d-8a69-9579f1a98b05.png" />
+    <meta property="og:description" content="ModelScope——汇聚各领域先进的机器学习模型，提供模型探索体验、推理、训练、部署和应用的一站式服务。在这里，共建模型开源社区，发现、学习、定制和分享心仪的模型。" />
+    <link rel="search" type="application/opensearchdescription+xml" title="魔搭" href="/opensearch.xml">
+    <link rel="dns-prefetch" href="//g.alicdn.com" />
+    <link rel="icon" type="image/x-icon" href="//g.alicdn.com/sail-web/maas/2.11.4/favicon/128.ico">
+    <link
+      rel="stylesheet"
+      href="//g.alicdn.com/sail-web/maas/2.11.4/umi.css"
+    />
+    <script src="//o.alicdn.com/frontend-lib/common-lib/jquery.min.js"></script>
+    <script>
+      window.routerBase = "/";
+      window.publicPath = "//g.alicdn.com\/sail-web\/maas\/2.11.4/";
+      window.__detail_data__ = "{\"AlreadyStar\":false,\"ApplyMeta\":null,\"ApprovalMode\":1,\"ApprovalNotifyEmail\":null,\"Avatar\":null,\"CertificationMark\":0,\"ChineseName\":\"BAAI-DataCube_第一人称驾驶视频数据集\",\"CreatedBy\":\"zxxzgz\",\"Description\":null,\"Downloads\":49,\"FromSite\":\"maas\",\"FullName\":\"北京智源人工智能研究院\",\"GmtCreate\":1756873241,\"GmtModified\":1761276793,\"Id\":140318,\"IsFlex\":0,\"LastUpdatedTime\":1756979109,\"License\":\"CC-BY-NC-4.0\",\"Likes\":0,\"NEXA\":null,\"Name\":\"BAAI-DataCube_First-person-Driving\",\"Namespace\":\"BAAI\",\"Organization\":{\"Avatar\":\"https://resouces.modelscope.cn/avatar/5b2ecfe4-6631-4f8d-8a69-9579f1a98b05.png\",\"CreatedBy\":\"yanster\",\"DatasetCount\":null,\"Description\":\"[\\\"root\\\",{},[\\\"p\\\",{},[\\\"span\\\",{\\\"data-type\\\":\\\"text\\\"},[\\\"span\\\",{\\\"color\\\":\\\"rgb(234, 67, 53)\\\",\\\"data-type\\\":\\\"leaf\\\"},\\\"智源\\\"],[\\\"span\\\",{\\\"color\\\":\\\"rgb(77, 81, 86)\\\",\\\"data-type\\\":\\\"leaf\\\"},\\\"研究院是人工智能领域的新型研发机构，汇集国际顶尖人工智能学者，聚焦核心技术与原始创新，旨在推动人工智能领域发展政\\\"],[\\\"span\\\",{\\\"color\\\":\\\"rgb(55, 65, 81)\\\",\\\"highlight\\\":\\\"rgb(247, 247, 248)\\\",\\\"data-type\\\":\\\"leaf\\\"},\\\"策与产业创新。\\\"]]]]\",\"FullName\":\"北京智源人工智能研究院\",\"GithubAddress\":\"https://www.baai.ac.cn/\",\"GmtCreated\":1698696538,\"GmtModified\":1761257340,\"Id\":400,\"Name\":\"BAAI\",\"Type\":1},\"Owner\":\"BAAI\",\"ProtectedMode\":2,\"ReadmeContent\":\"## 数据集简介\\n\\n* 智源数据魔方（ https://datacube.baai.ac.cn ）系列数据集由智源数据魔方产品根据不同场景和需求自动构建，欢迎加入用户沟通群\\n\\n![](https://resources.ks3-cn-beijing.ksyuncs.com/projects/DataCube/QR.png)\\n\\n* 涵盖7大方向，40个高质量视频数据，详情如下：\\n\\n| 系列      | 子方向     | 数据集中文名称     | 数据集英文名称                          | 应用场景                                                |\\n| ------- | ------- | ----------- | -------------------------------- | --------------------------------------------------- |\\n| 人物动作与交互 | 手部动作    | 手部动作视频数据集   | Gesture-Recognition              | 用于手势识别模型、人机交互模型，VR/AR 手势控制、智能家居指令识别等场景              |\\n|         |         | 手工/DIY视频数据集 | DIY                              | 用于操作步骤识别、手部动作跟踪等场景，适合训练机器人 学习装配/制作任务，也可用于动作分解和模仿学习。 |\\n|         |         | 烹饪视频数据集     | Cooking                          | 适合动作分解学习（切菜、翻炒等），任务规划（烹饪步骤预测）等场景                    |\\n|         | 身体动作    | 健身运动视频数据集   | Fitness-Exercise                 | 用于动作识别与纠错模型，支持健身指导、姿态矫正、智能健身教练等场景                   |\\n|         |         | 室外运动视频数据集   | Outdoor-Sports                   | 适合人体关键点识别、动作分析等场景，支持体育赛事分析、智能裁判和运动辅助机器人等应用          |\\n|         |         | 儿童活动视频数据集   | Children’s-Activities            | 用于行为检测、儿童安全监控等场景，适合教育机器人、陪伴机器人等应用                   |\\n|         | 表情与情绪   | 情绪视频数据集     | Facial-Expression                | 用于训练情绪识别模型，支持人机交互情感计算、客服机器人、心理健康监测等场景               |\\n|         |         | 表情视频数据集     | Fine-grained-Facial Expression   | 细粒度表情识别数据集，支持微表情分析、多模态对话系统等应用，提升 LLM 在具身交互中的情感理解能力  |\\n|         | 社会交互    | 双人互动视频数据集   | Two-person-Interaction           | 训练社交互动识别等模型，支持对话场景检测、机器人社交技能模拟等场景                   |\\n|         |         | 人群聚集视频数据集   | Crowd                            | 用于人群检测、密度估计、城市安防、公共场所监控中的异常检测等场景                    |\\n|         |         | 校园视频数据集     | Campus                           | 训练群体交互识别模型，支持校园安全、课堂场景分析、教育 AI 系统建设等应用              |\\n| 第一人称与导航 | 驾驶与第一人称 | 第一人称驾驶视频数据集 | First-person-Driving             | 自动驾驶和第一人称导航任务，支持 驾驶行为预测、路径规划等应用                     |\\n|         | 导航与镜头移动 | 室内场景视频数据集   | Indoor-Scene-Dataset             | 支持训练室内导航等模型，支持服务机器人在 室内环境中导航、避障等任务                  |\\n|         |         | 公路场景视频数据集   | Road-trip-Dataset                | 用于道路场景感知、自动驾驶场景模拟等任务和场景                             |\\n| 表演与舞台   | 舞蹈与表演   | 舞蹈表演视频数据集   | Dance-Performance Dataset        | 用于人体动作生成、舞蹈动作模仿等场景                                  |\\n|         |         | 歌曲表演视频数据集   | Song-Performance Dataset         | 用于歌唱动作识别、舞台表演动作预测等应用                                |\\n|         | 舞台/演讲   | 演讲视频数据集     | Speech-Dataset                   | 训练姿态-语音多模态模型，支持 演讲者手势分析、虚拟主持人等场景                    |\\n|         |         | 表演视频数据集     | Performing-Arts-Dataset          | 支持虚拟表演生成、数字人训练、舞台动作理解等场景                            |\\n|         |         | 新闻播报视频数据集   | Breaking-News-Dataset            | 支持虚拟新闻主播生成等应用                                       |\\n| 热点与节日   | 情人节     | 情人节日视频数据集   | Valentine’s-Day-Dataset          | 训适合广告推荐、节日事件检测、情感交互等应用                              |\\n| 安全与安防   | 火灾      | 火灾视频数据集     | Fire-Incident-Dataset            | 训练火灾检测等模型，支持智能监控、机器人应急响应                            |\\n|         | 洪水      | 洪水视频数据集     | Flood-Dataset                    | 训练自然灾害识别等模型，支持防灾预警等应用                               |\\n|         | 加油站     | 加油站视频数据集    | Gas-Station-Dataset              | 训练特定场景监控等安全模型，支持安全生产和异常行为检测等应用                      |\\n|         | 劳动安全    | 工人穿戴视频数据集   | Worker-Wearing-Detection-Dataset | 训练安全检测模型，支持工业安全与合规监控等应用                             |\\n| 生活与日常   | 家庭生活    | 家庭生活视频数据集   | Living-Room-Dataset              | 训练 日常行为识别等模型，适合家庭服务机器人、智能安防等应用                      |\\n|         | 儿童教育    | 儿童学习视频数据集   | Children-Classroom Dataset       | 训练 教育场景行为识别等模型，支持课堂互动检测、教育机器人等应用                    |\\n| 动物与自然   | 动物      | 鸟视频数据集      | Bird-Dataset                     | 训练动物识别等模型                                           |\\n|         |         | 猫视频数据集      | Cat-Dataset                      | 支持动物识别与分类、宠物行为分析、视频监控中小动物检测等应用                      |\\n|         |         | 狗视频数据集      | Dog-Dataset                      | 犬类动作识别、支持导盲犬/工作犬行为建模、宠物表情识别、多模态视频问答等应用              |\\n|         |         | 鱼视频数据集      | Fishes-Dataset                   | 支持水下检测与识别、海洋生物监测等应用                                 |\\n|         |         | 昆虫视频数据集     | Insect-Dataset                   | 支持生态环境监测、害虫检测与农业智能化、微小目标检测与跟踪研究等应用                  |\\n|         | 自然      | 雨林视频数据集     | Rainforest-Dataset               | 支持复杂场景识别、环境变化监测、生态保护研究等应用                           |\\n|         |         | 沙漠视频数据集     | Desert-Dataset                   | 支持极端环境识别、自动驾驶在稀疏地貌中的视觉感知训练、气候变化研究                   |\\n|         |         | 山川视频数据集     | Mountain-Dataset                 | 户外场景识别、无人机导航、AR/VR 场景生成、地貌分类                        |\\n|         |         | 河流视频数据集     | River -Dataset                   | 支持水域检测与监控、水文环境建模、洪涝灾害监测等应用                          |\\n|         |         | 海洋视频数据集     | Ocean-Dataset                    | 支持海洋场景分割、水下机器人感知、海洋生物识别等模型训练和应用                     |\\n|         |         | 草原视频数据集     | Grassland-Dataset                | 应用于大面积生态环境识别、无人机遥感任务、野生动物栖息地分析等模型                   |\\n|         |         | 天空视频数据集     | Sky-Dataset                      | 应用于天气识别、航拍与卫星视觉、自动驾驶视觉背景建模等场景                       |\\n|         |         | 森林视频数据集     | Forest-Dataset                   | 森林防火监控、无人机林业巡检、复杂植被环境建模等场景                          |\\n|         |         | 花视频数据集      | Flower-Dataset                   | 植物识别与分类、园艺/农业智能化、细粒度图像识别、多模态美学生成等场景                 |\\n|         |         | 雨视频数据集      | Rain-Dataset                     | 天气感知与预测、视觉去雨任务训练、自动驾驶在恶劣天气下的测试等场景                   |\\n\\n## 数据魔方产品介绍\\n\\n* 智源研究院研发的数据魔方（DataCube）可实现从“数据集Level”到“数据样本Level”的精准检索，满足用户个性化的数据需求，只需自然语言输入数据需求，平台便能快速构建专属的个性化数据集，彻底打破以往操作流程的桎梏。\\n\\n* 在核心技术架构层面，数据魔方依托智源数据平台支持的100+数据处理算子，实现 PB 级数据的自动化处理Pipeline；深度融合 CLIP Understanding 引擎，对多模态样本从本体、行为、视角与风格等多维细进行细粒度语义解析，逐条构建精细数据画像；辅以 Hybrid Retrieval 体系，实现跨模态特征的毫秒级精准召回；最终通过 Data Evaluation 评估数据集构建效果，实现个性化高质量数据集生成。数据魔方具有以下特点：\\n\\n\\n\\n  * \\u0026#x20;响应速度“快”，自然语言输入需求后，最快能秒级反馈并生成数据集\\n\\n  * 成本“省”，免去繁琐的数据筛选过滤过程，极大降低了人力与时间成本\\n\\n  * 数据量“多”，目前已汇聚5000W+数据样本基础，且数量仍在持续增长\\n\\n  * 数据质量“好”，内置深度语义理解算法，确保检索到的数据相关性极高\\n\\n\\n\\n* 数据魔方使用演示：\\n\\n[数据魔方演示-DIY-8月31日.mov](https://resources.ks3-cn-beijing.ksyuncs.com/projects/DataCube/demo.mov)\\n\\n\\n\\n\\n\\n## 许可与使用\\n\\n* 本数据集仅限学术研究与非商业用途\\n\\n* 使用即视为同意智源研究院数据魔方产品相关协议和使用条款\\n\\n* 意见反馈与业务合作，欢迎联系：\\u003cBAAI_data@baai.ac.cn\\u003e\\u0026#x20;\\n\",\"RelateArxivId\":null,\"Size\":null,\"SourcePlatform\":null,\"Status\":1,\"StorageSize\":56126867585,\"Tags\":null,\"Type\":4,\"UsedFor\":null,\"UserDefineTags\":null,\"Visibility\":5,\"isTop\":null,\"nexa\":null,\"relatedPaperId\":null,\"topIndex\":null}";
+      window.MODELSCOPE_SITE_MODE = "COMMON";
+      window.MODELSCOPE_DEMO_SCHEMA_VERSION = "0.0.2"
+    </script>
+    <script>
+      
+    </script>
+    <script
+      src="//g.alicdn.com/alilog/mlog/aplus_v2.js"
+      id="beacon-aplus"
+    ></script>
+    <script src="//g.alicdn.com/vip/havana-login/0.3.2/js/mini-login-embedder-min.js" crossorigin="anonymous"></script>
+    <script src="//o.alicdn.com/captcha-frontend/aliyunCaptcha/AliyunCaptcha.js" crossorigin="anonymous" async></script>
+    <script src="//lang.alicdn.com/mcms/modelscope-fe/0.0.118/modelscope-fe.json" crossorigin="anonymous"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9CSTSKFC5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K9CSTSKFC5');
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="//g.alicdn.com/sail-web/maas/2.11.4/umi.js" crossorigin="anonymous"></script>
+  </body>
+</html>
+

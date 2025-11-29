@@ -1,0 +1,29 @@
+youtube:
+  api_key_env: YOUTUBE_API_KEY
+  region_code: US
+  video_license: creativeCommon
+  video_duration: medium
+  published_after: 2022-01-01T00:00:00Z
+  published_before:
+  max_results_per_term: 40
+
+search:
+  queries:
+    - "first person driving pov"
+    - "driver view dashcam downtown"
+    - "pov night drive car"
+  min_duration_seconds: 60
+  max_duration_seconds: 600
+  require_terms:
+    - "drive"
+    - "pov"
+
+download:
+  output_dir: ./data/fpv_videos
+  metadata_path: ./data/fpv_videos/metadata.jsonl
+  max_videos: 20
+  skip_existing: true
+  download_assets: true
+  prefer_audio: false
+  dry_run: false
+

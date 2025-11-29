@@ -1,0 +1,25 @@
+---
+# Path to the input MP4 to upscale. Accepts absolute or relative paths.
+input_video: ./VideoProcessingLab/example_input.mp4
+
+# Optional explicit output path. Leave commented to let the script build one automatically.
+# output: ./VideoProcessingLab/example_input_4k.mp4
+
+# Target dimensions for the FFmpeg scale filter.
+width: 3840
+height: 2160
+
+# Scale filter + encoder controls.
+scale_filter: lanczos
+video_codec: libx264
+preset: slow
+crf: 18
+# bitrate: 30M
+
+# Audio handling.
+audio_codec: copy
+# audio_bitrate: 320k
+
+# Behaviour toggles.
+overwrite: false
+dry_run: true

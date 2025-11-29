@@ -1,0 +1,21 @@
+sources:
+  - name: Investopedia Classic Patterns
+    url: https://www.investopedia.com/articles/technical/04/030304.asp
+    heading_selector: article h2
+    stop_tags: ["h2"]
+    max_patterns: 8
+    min_words: 25
+
+  - name: BabyPips Candles
+    url: https://www.babypips.com/learn/forex/types-of-candlestick-patterns
+    heading_selector: article h2
+    stop_tags: ["h2"]
+    max_patterns: 10
+    min_words: 20
+
+output:
+  metadata_path: ./WebHarvesting/CandleScraper/data/candlestick_patterns.jsonl
+  append: true
+
+user_agent: GeneralLabeller/CandleScraper (contact@example.com)
+timeout_seconds: 25

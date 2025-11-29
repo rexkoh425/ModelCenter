@@ -1,0 +1,2 @@
+"""Candlestick pattern scraping utilities."""
+
