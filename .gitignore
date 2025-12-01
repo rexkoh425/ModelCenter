@@ -1,0 +1,23 @@
+# Large binaries and checkpoints
+**/*.pt
+**/*.bin
+**/*.gguf
+**/optimizer.pt
+**/checkpoint-*
+
+# LaneATT experiment zips and logs
+vision/LaneATT/laneatt_experiments*
+vision/LaneATT/checkpoints/*.pt
+vision/LaneATT/experiments/*/models/*.pt
+vision/LaneATT/experiments/*/log_train.txt
+
+# YOLOP/YOLOPv2 packed objects
+vision/YOLOP/.git/objects/pack/*
+vision/YOLOPv2/.git/objects/pack/*
+
+# TinyLlama splits/checkpoints
+llm/tinyllama/splits/*.jsonl
+llm/tinyllama_finetuned_v*/checkpoint-*/optimizer.pt
+
+# Whisper binaries
+audio/whisper/*.bin
