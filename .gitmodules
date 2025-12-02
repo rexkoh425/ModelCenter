@@ -1,0 +1,12 @@
+[submodule "vision/YOLOPv2"]
+	path = vision/YOLOPv2
+	url = https://github.com/CAIC-AD/YOLOPv2.git
+[submodule "segmentation/SAM3"]
+	path = segmentation/SAM3
+	url = https://github.com/facebookresearch/sam3.git
+[submodule "segmentation/SegFormer"]
+	path = segmentation/SegFormer
+	url = https://github.com/NVlabs/SegFormer.git
+[submodule "vision/YOLOP"]
+	path = vision/YOLOP
+	url = https://github.com/hustvl/YOLOP.git
