@@ -21,3 +21,7 @@ llm/tinyllama_finetuned_v*/checkpoint-*/optimizer.pt
 
 # Whisper binaries
 audio/whisper/*.bin
+
+# Environment configs
+.env
+**/.env
